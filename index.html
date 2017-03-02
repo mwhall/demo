@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#5C3566">
+    <meta name='subject' content='Freesewing demo'>
+    <meta name='copyright' content='Joost De Cock'>
+    <meta name='language' content='EN'>
+    <meta name='robots' content='index,follow'>
+    <meta name="author" content="Joost De Cock">
+    <title>Freesewing demo - Freesewing Documentation</title>
+
+    <!--
+          __                           _           
+         / _|_ _ ___ ___ ________ __ _(_)_ _  __ _ 
+        |  _| '_/ -_) -_|_-< -_) V  V / | ' \/ _` |
+        |_| |_| \___\___/__|___|\_/\_/|_|_||_\__, |
+                      freesewing.org         |___/ 
+    --> 
+
+    <!-- CSS Bundle -->
+    <link rel="stylesheet" href="http://docs.freesewing.org/css/style.css">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+    <!-- Demo code -->
+    <script src="demo.js"></script>
+    <script type='text/javascript'>
+        $(function() {
+            $(document).on('click', '.demo-trigger', function() { demo($(this)); });
+        });
+    </script>
+</head>
+<body>
+    <header class="page-header fade-oc">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 offset-md-1">
+                    <h1 class="page-title">Freesewing demo</h1>
+                </div> 
+            </div> 
+        </div>
+    </header>
+
+    <div class="fade-oc">
+        <div class="container oc-fade" id="demo-wrapper">
+            <div class="row"><div class="col" id="breadcrumbs"></div></div>
+            <div class="row" id="service-chooser">
+                <div class="col-6 col-md-3 mt-5">
+                    <div class="card h-100">
+                        <div class="card-block" style="padding: 0.25rem;">
+                            <h4 class="card-title">Info</h4>
+                                <p class="card-text">The info service returns API info to facilitate front-end integration. </p>
+                        </div>
+                        <div class="mt-1">
+                            <a href="#" class="btn btn-block btn-primary demo-trigger" data-method="load-service" data-service="info">Info demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 mt-5">
+                    <div class="card h-100">
+                        <div class="card-block" style="padding: 0.25rem;">
+                            <h4 class="card-title">Draft</h4>
+                            <p class="card-text">The draft service is freesewing's core pattern drafting service. </p>
+                        </div>
+                    <div class="mt-1">
+                        <a href="#" class="btn btn-block btn-primary demo-trigger" data-method="load-service" data-service="draft">Draft demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mt-5">
+                <div class="card h-100">
+                    <div class="card-block" style="padding: 0.25rem;">
+                        <h4 class="card-title">Sample</h4>
+                        <p class="card-text">The sample service samples pattern options or model measurements. </p>
+                    </div>
+                    <div class="mt-1">
+                        <a href="#" class="btn btn-block btn-primary demo-trigger" data-method="load-service" data-service="sample">Sample demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mt-5">
+                <div class="card h-100">
+                    <div class="card-block" style="padding: 0.25rem;">
+                        <h4 class="card-title">Compare</h4>
+                        <p class="card-text">The compare service compares your draft to standard model drafts. </p>
+                    </div>
+                    <div class="mt-1">
+                        <a href="#" class="btn btn-block btn-primary demo-trigger" data-method="load-service" data-service="compare">Compare demo</a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .row -->
+        <div class="row mt-4"><div class="col" id="demo"></div>
+    </div>
+    <div id="scroller"><a class='scroll-to-top' title="Back to top"><i class="fa fa-arrow-up" aria-hidden="true" aria-label="Back to top"></i></a></div>
+  </body>
+</html>
