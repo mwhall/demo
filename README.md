@@ -14,7 +14,7 @@ If you want your own demo without the hassle, you can simply clone this into a w
 You should only configure the `api` value in the demo.js. Default is:
 
 ```
-var api = 'https://api.freesewing.org';
+var api = 'https://core.freesewing.org';
 ```
 
 You should change that to your own freesewing instance. **Note**: No trailing slash
