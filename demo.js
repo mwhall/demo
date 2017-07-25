@@ -16,7 +16,7 @@
 ///////////////////
 
 // Set the location of the API you want to connect to.
-var api = 'https://core.freesewing.org';
+var api = 'https://joost.core.freesewing.org';
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -429,6 +429,8 @@ function loadDraft(service, pattern)
     // Storing form data before setting spinner as it will trash our form
     var formdata = $("#form").serialize();
     var postdata = $("#form").serializeArray();
+    if($('#theme').val() == 'Developer') var dataType = 'json';
+    else var dataType = 'html';
 
     // Setting spinner
     setSpinner();
@@ -476,19 +478,26 @@ function loadDraft(service, pattern)
     $.ajax({
         type: "POST",
         url: url,
-        dataType: "html",
+        dataType: dataType,
         data: formdata,
         success: function(data) {
+            console.log($('#theme').val());
             // Response loaded
-            addTabs(['Result','SVG','Request'],'info');
-            if($('#theme').val() == 'Developer') {
-                data = jQuery.parseJSON(data);
+            if(dataType == 'json') {
+                console.log(data);
+                addTabs(['Result','SVG','Request','Kint Debug'],'info');
+                $('#infotab-0').html("<figure class='image' id='svg-image'><div class='drop-shadow'>"+data.svg+"</div></figure>");
+                $('#infotab-3').html("<div>"+data.debug+"</div>");
+                $('#infotab-1').html("<pre class='highlight'><code class='highlighter-rouge' id='svg-source'></code></pre>");
+                $('#svg-source').text(data.svg);
+            } else {
+                addTabs(['Result','SVG','Request'],'info');
+                $('#infotab-0').html("<figure class='image' id='svg-image'><div class='drop-shadow'>"+data+"</div></figure>");
+                $('#infotab-1').html("<pre class='highlight'><code class='highlighter-rouge' id='svg-source'></code></pre>");
+                $('#svg-source').text(data);
             }
-            $('#infotab-0').html("<figure class='image' id='svg-image'><div class='drop-shadow'>"+data+"</div></figure>");
             $('#svg-image').append("<figcaption id='svg-caption'>"+msg+"&nbsp;</figcaption>");
             $('#svg-caption').append("<a href='"+api+"?service="+service+"&pattern="+pattern+"&"+formdata+"' target='_BLANK'><i class='fa fa-external-link' aria-hidden='true'></i></a>");
-            $('#infotab-1').html("<pre class='highlight'><code class='highlighter-rouge' id='svg-source'></code></pre>");
-            $('#svg-source').text(data);
             $('#infotab-2').html("<h2>Request URL</h2>");
             $('#infotab-2').append("<pre class='highlight'><code class='highlighter-rouge'>"+api+"/?service="+service+"&pattern="+pattern+"&embedFluid=1</code></pre>");
             $('#infotab-2').append("<h2>Request parameters</h2>");
