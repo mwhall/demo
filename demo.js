@@ -16,7 +16,7 @@
 ///////////////////
 
 // Set the location of the API you want to connect to.
-var api = 'https://joost.core.freesewing.org';
+var api = 'https://core.freesewing.org';
 
 
 ///////////////////////////////////////////////////////////////////////////
