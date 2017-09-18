@@ -1,7 +1,7 @@
-<a href="https://freesewing.org"><img src="http://docs.freesewing.org/img/logo-black.svg" align="right" width=200 /></a>
+<a href="https://freesewing.org"><img src="https://freesewing.org/img/logo/logo-black.svg" align="right" width=200 /></a>
 # Freesewing stand-alone demo
 
-This is a stand-alone version of [the freesewing demo](https://docs.freesewing.org/demo).
+This is a stand-alone version of [the freesewing demo](https://demo.freesewing.org/).
 
 ## Why a stand-alone demo?
 The online demo is part of the documentation, but that is a Jekyll-based site.
