@@ -16,7 +16,7 @@
 ///////////////////
 
 // Set the location of the API you want to connect to.
-var api = 'https://core.freesewing.org';
+var api = 'https://joost.core.freesewing.org';
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -150,6 +150,9 @@ function loadInfoService()
         $('#infotab-2').append("<pre class=\"highlight\"><code>"+url+"</code></pre>");
         $('#infotab-2').append("<h3>Request parameters</h3>");
         $('#infotab-2').append("<pre class='highlight'><code class='highlighter-rouge'>service: info</code></pre>");
+        $('#infotab-2').append("<h2>Replay core API call</h2>");
+        var replay = api+"/?service=info";
+        $('#infotab-2').append("<p><a href='"+replay+"' target='_BLANK'>This link</a> will open the same result in a new window.</p>");
         scrollTo('#demo');
     });
 }
@@ -268,10 +271,13 @@ function patternInfo(pattern)
         }
 
         $('#infotab-1').html("<pre class=\"highlight\"><code>"+JSON.stringify(data, null, '    ')+"</code></pre>");
-        $('#infotab-2').html("<h3>Request URL</h3>");
+        $('#infotab-2').html("<h2>Request URL</h2>");
         $('#infotab-2').html("<pre class=\"highlight\"><code>"+url+"</code></pre>");
         $('#infotab-2').append("<h3>Request parameters</h3>");
         $('#infotab-2').append("<pre class='highlight'><code class='highlighter-rouge'>service: info\npattern: "+pattern+"</code></pre>");
+        var replay = api+"/?service=info&pattern="+pattern;
+        $('#infotab-2').append("<h2>Replay core API call</h2>");
+        $('#infotab-2').append("<p><a href='"+replay+"' target='_BLANK'>This link</a> will open the same result in a new window.</p>");
         scrollTo('#demo');
     });
 }
@@ -507,6 +513,10 @@ function loadDraft(service, pattern)
             $.each(postdata, function( key, obj ) {
                 $('#post-data').append(obj.name+': '+obj.value+"\n");
             });
+            $('#infotab-2').append("<h2>Replay core API call</h2>");
+            var replay = api+"/?service="+service+"&pattern="+pattern+"&"+formdata;
+            $('#infotab-2').append("<p><a href='"+replay+"' target='_BLANK'>This link</a> will open the same result in a new window.</p>");
+
     
             // Clear spinner
             clearSpinner();
@@ -591,15 +601,19 @@ function loadSample(pattern, type, option)
             $('#svg-caption').append("<a href='"+link+"' target='_BLANK'><i class='fa fa-external-link' aria-hidden='true'></i></a>");
             $('#infotab-1').html("<pre class='highlight'><code class='highlighter-rouge' id='svg-source'></code></pre>");
             $('#svg-source').text(data);
-            $('#infotab-2').html("<h3>Request URL</h3>");
+            $('#infotab-2').html("<h2>Request URL</h2>");
             $('#infotab-2').append("<pre class='highlight'><code class='highlighter-rouge'>"+url+"</code></pre>");
             $('#infotab-2').append("<h3>Request parameters</h3>");
             $('#infotab-2').append("<pre class='highlight'><code class='highlighter-rouge'>service: sample\npattern:"+pattern+"\nembedFluid: 1</code></pre>");
             $('#infotab-2').append("<h3>POST data</h3>");
             $('#infotab-2').append("<pre class='highlight'><code class='highlighter-rouge' id='post-data'></code></pre>");
+            var replay = api+"/?service=sample&pattern="+pattern+"&";
             $.each(postdata, function( key, value ) {
                 $('#post-data').append(key+': '+value+"\n");
+                replay += key+'='+value+'&';
             });
+            $('#infotab-2').append("<h2>Replay core API call</h2>");
+            $('#infotab-2').append("<p><a href='"+replay+"' target='_BLANK'>This link</a> will open the same result in a new window.</p>");
             
             // Clear spinner
             clearSpinner();
